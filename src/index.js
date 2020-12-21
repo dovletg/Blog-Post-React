@@ -1,50 +1,57 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import './index.css';
-//import App from './App';
+import App from './App';
 import reportWebVitals from './reportWebVitals';
 
-const blogPost = {
+const myBlogPosts = [
+  {
     title: 'My first blog',
+    body: 'lorem ipsum dolor sit amet..',
+    published: false
+  },
+  {
+    title: 'My second blog',
+    body: 'lorem ipsum dolor sit amet..',
+    published: true
+  },
+  {
+    title: 'My third blog',
+    body: 'lorem ipsum dolor sit amet..',
+    published: false
+  },
+  {
+    title: 'My fourth blog',
     body: 'lorem ipsum dolor sit amet..',
     published: true
   }
- 
+]
 
-let isPublishedClassName;
-if(blogPost.published){
-  isPublishedClassName = 'green'
-} else {
-  isPublishedClassName = 'red'
+function publishThePost(e) {
+  if(e.target.innerText === 'Publish') {
+    e.target.innerText = 'Unpublish';
+    e.target.parentElement.querySelector('.blog-title').style.color = 'green';
+  } else {
+    e.target.innerText = 'Publish'
+    e.target.parentElement.querySelector('.blog-title').style.color = 'red';
+  }
 }
 
-const element = <h1 className={isPublishedClassName}>{blogPost.title}</h1>;
-
-//function publishThePost(e) {
-  //if(e.target.innerText === 'Publish') {
-   // e.target.innerText = 'Unpublish';
-  //  e.target.parentElement.querySelector('.blog-title').style.color = 'green';
- // } else {
-  //  e.target.innerText = 'Publish'
- //   e.target.parentElement.querySelector('.blog-title').style.color = 'red';
- // }
-//}
-
-//const blogPost = myBlogPosts.map((myBlogPost,index) => {
- // return (
-//    <div key={'post_' + index}>
- //     <h1 className={(myBlogPost.published ? 'green' : 'red') + ' blog-title'}>//{myBlogPost.title}</h1>
- //     <p>{myBlogPost.body}</p>
- //     <button onClick={publishThePost}>{myBlogPost.published ? 'Unpublish' : //'Publish'}</button>
-  //    <img src="" alt="" />
-  //    <hr/>
-  //  </div>
-  //  
-  //);
-//})
+const blogPost = myBlogPosts.map((myBlogPost,index) => {
+  return (
+    <div key={'post_' + index}>
+      <h1 className={(myBlogPost.published ? 'green' : 'red') + ' blog-title'}>{myBlogPost.title}</h1>
+      <p>{myBlogPost.body}</p>
+      <button onClick={publishThePost}>{myBlogPost.published ? 'Unpublish' : 'Publish'}</button>
+      <img src="" alt="" />
+      <hr/>
+    </div>
+    
+  );
+})
 
 ReactDOM.render(
-  element,
+  blogPost,
   document.getElementById('root')
 );
 
@@ -54,6 +61,6 @@ ReactDOM.render(
 reportWebVitals();
 
 
-/* <React.StrictMode>
+{/* <React.StrictMode>
     <App />
-  </React.StrictMode> */
+  </React.StrictMode> */}
