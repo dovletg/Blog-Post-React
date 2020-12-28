@@ -3,11 +3,13 @@ import ReactDOM from 'react-dom';
 import './index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
-import {BlogPost} from './BlogPost';
+//import {BlogPost} from './BlogPost';
 
 
 ReactDOM.render(
-  <BlogPost />,
+  <React.StrictMode>
+    <App />
+  </React.StrictMode>,  
   document.getElementById('root')
 );
 
@@ -17,6 +19,3 @@ ReactDOM.render(
 reportWebVitals();
 
 
-{/* <React.StrictMode>
-    <App />
-  </React.StrictMode> */}
