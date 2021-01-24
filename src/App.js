@@ -1,4 +1,5 @@
 import './App.css';
+import Posts from './components/Posts';
 
 const posts = [
   {title: "sunt aut facere repellat provident occaecati excepturi optio             reprehenderit",
@@ -18,16 +19,7 @@ function App() {
   return (
     <div>
       <h1 style={{textAlign: 'center'}}>Welcome to my Blog</h1>
-      <section>
-        {
-          posts.map((globe) => {
-            return (<article>
-                <h2>{globe.title}</h2>
-                <p>{globe.body}</p>
-              </article>)
-          })
-        }
-      </section>
+      <Posts blogPosts={posts}/>
     </div>
   );
 }
